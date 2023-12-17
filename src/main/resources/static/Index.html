@@ -85,6 +85,8 @@
 
   <button type="button" onclick="addCar()">Registrer</button>
 
+  <button type="button" onclick="fillAndAddCar()">Fill and Add Car</button>
+
   <button type="button" onclick="deleteAllCars()">Slett alle</button>
 </form>
 
@@ -320,6 +322,56 @@
   function highlightErrorField(fieldId) {
     const field = document.getElementById(fieldId);
     field.classList.add('error');
+  }
+
+  function fillAndAddCar() {
+    // Reset error styles
+    resetErrorStyles();
+
+    // Sample data
+    const sampleData = {
+      persNum: generateRandomPersonnummer(),
+      navn: "John Doe",
+      adresse: "Sample Address, 12345 City",
+      bilskilt: generateRandomBilskilt(),
+      merke: "Toyota",
+      modell: "Camry",
+    };
+
+    // Fill in the form fields with sample data
+    document.getElementById("persNum").value = sampleData.persNum;
+    document.getElementById("navn").value = sampleData.navn;
+    document.getElementById("adresse").value = sampleData.adresse;
+    document.getElementById("bilskilt").value = sampleData.bilskilt;
+    document.getElementById("merke").value = sampleData.merke;
+    document.getElementById("modell").value = sampleData.modell;
+
+    // Add the car to the list
+    addCar();
+  }
+
+  function generateRandomPersonnummer() {
+    // Generate random day (01-31), month (01-12), and year (00-99)
+    const dayPart = padLeadingZero(Math.floor(Math.random() * 31) + 1);
+    const monthPart = padLeadingZero(Math.floor(Math.random() * 12) + 1);
+    const yearPart = padLeadingZero(Math.floor(Math.random() * 100));
+
+    // Concatenate parts to form the Personnummer
+    return `${dayPart}${monthPart}${yearPart}12345`;
+  }
+
+  function generateRandomBilskilt() {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numbers = '0123456789';
+
+    const randomLetters = Array.from({ length: 2 }, () => letters[Math.floor(Math.random() * letters.length)]).join('');
+    const randomNumbers = Array.from({ length: 5 }, () => numbers[Math.floor(Math.random() * numbers.length)]).join('');
+
+    return `${randomLetters}${randomNumbers}`;
+  }
+
+  function padLeadingZero(value) {
+    return value < 10 ? `0${value}` : `${value}`;
   }
 
 </script>
