@@ -70,14 +70,12 @@
     cell6.innerHTML = modell;
     cell7.innerHTML = '<button onclick="deleteCar(this)">Delete</button>';
 
-    // Send data to server (not implemented in this example)
   }
 
   function deleteCar(row) {
     let rowIndex = row.parentNode.parentNode.rowIndex;
     document.getElementById("carTable").deleteRow(rowIndex);
 
-    // Send delete request to server (not implemented in this example)
   }
 </script>
 </body>
