@@ -112,6 +112,12 @@
       return;
     }
 
+    // Validate bilskilt
+    if (!validateBilskilt(bilskilt)) {
+      alert("Invalid bilskilt! It should start with 2 letters followed by 5 numbers.");
+      return;
+    }
+
     let table = document.getElementById("carTable");
     let row = table.insertRow(-1);
     let cell1 = row.insertCell(0);
@@ -233,6 +239,10 @@
     return true;
   }
 
+  function validateBilskilt(bilskilt) {
+    // Check if bilskilt starts with 2 letters followed by 5 numbers
+    return /^[A-Za-z]{2}\d{5}$/.test(bilskilt);
+  }
 
 </script>
 </body>
