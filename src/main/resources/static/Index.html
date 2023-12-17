@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Car Registry</title>
+  <link rel="stylesheet" type="text/css" href="Index.css">
+  <title>Motorvognregister</title>
 </head>
 <body>
 <h1>Bilregister</h1>
@@ -99,6 +100,8 @@
 
 <script>
   function addCar() {
+    resetErrorStyles();
+
     let persNum = document.getElementById("persNum").value;
     let navn = document.getElementById("navn").value;
     let adresse = document.getElementById("adresse").value;
@@ -106,20 +109,30 @@
     let merke = document.getElementById("merke").value;
     let modell = document.getElementById("modell").value;
 
+    // Check for empty fields
+    if (!persNum || !navn || !adresse || !bilskilt || !merke || !modell) {
+      alert("Please fill out all fields.");
+      highlightEmptyFields();
+      return;
+    }
+
     // Validate person number
     if (!validatePersonNr(persNum)) {
       alert("Invalid person number!");
+      highlightErrorField("persNum");
       return;
     }
 
     // Validate bilskilt
     if (!validateBilskilt(bilskilt)) {
       alert("Invalid bilskilt! It should start with 2 letters followed by 5 numbers.");
+      highlightErrorField("bilskilt");
       return;
     }
 
     if (isBilskiltInUse(bilskilt)) {
       alert("Bilskilt is already in use!");
+      highlightErrorField("bilskilt");
       return;
     }
 
@@ -253,6 +266,25 @@
     // Check if bilskilt is already in the current list
     const existingBilskiltList = Array.from(document.querySelectorAll('#carTable td:nth-child(4)')).map(cell => cell.textContent);
     return existingBilskiltList.includes(bilskilt);
+  }
+
+  function resetErrorStyles() {
+    const formInputs = document.querySelectorAll('#carForm input');
+    formInputs.forEach(input => input.classList.remove('error'));
+  }
+
+  function highlightEmptyFields() {
+    const formInputs = document.querySelectorAll('#carForm input');
+    formInputs.forEach(input => {
+      if (!input.value) {
+        input.classList.add('error');
+      }
+    });
+  }
+
+  function highlightErrorField(fieldId) {
+    const field = document.getElementById(fieldId);
+    field.classList.add('error');
   }
 
 </script>
