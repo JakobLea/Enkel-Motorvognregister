@@ -83,6 +83,8 @@
   <datalist id="bilModelList"></datalist>
 
   <button type="button" onclick="addCar()">Add Car</button>
+
+  <button type="button" onclick="deleteAllCars()">Delete All</button>
 </form>
 
 <h2>Car List</h2>
@@ -162,6 +164,13 @@
 
   }
 
+  function deleteAllCars() {
+    let table = document.getElementById("carTable");
+    // Remove all rows except the header
+    while (table.rows.length > 1) {
+      table.deleteRow(1);
+    }
+  }
 
   const carModels = {
     acura: ['MDX', 'RDX', 'TLX', 'ILX', 'NSX', 'RLX'],
