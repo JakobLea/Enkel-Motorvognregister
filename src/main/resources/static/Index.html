@@ -22,7 +22,7 @@
   <input type="text" id="bilskilt" name="bilskilt" required>
 
   <label for="merke">Merke:</label>
-  <input type="text" list="merkeListe" id="merke" name="merke" required>
+  <input type="text" list="merkeListe" id="merke" name="merke" required onchange="updateModelList()">
 
   <datalist id="merkeListe">
     <option value="Acura"></option>
@@ -77,7 +77,9 @@
 
 
   <label for="modell">Modell:</label>
-  <input type="text" id="modell" name="modell" required>
+  <input type="text" list="bilModelList" id="modell" name="modell" required>
+
+  <datalist id="bilModelList"></datalist>
 
   <button type="button" onclick="addCar()">Add Car</button>
 </form>
@@ -129,6 +131,79 @@
     document.getElementById("carTable").deleteRow(rowIndex);
 
   }
+
+
+  const carModels = {
+    acura: ['MDX', 'RDX', 'TLX', 'ILX', 'NSX', 'RLX'],
+    alfa_romeo: ['Giulia', 'Stelvio', '4C'],
+    aston_martin : ['DB11', 'DBS Superleggera', 'Vantage', 'Rapide', 'Valhalla'],
+    audi: ['A4', 'A6', 'Q5', 'Q7', 'Q3', 'A3', 'A8', 'Q8', 'e-tron', 'RS6 Avant', 'TT', 'R8'],
+    bentley: ['Bentayga', 'Continental GT', 'Flying Spur', 'Mulsanne', 'Bacalar'],
+    bmw: ['3 Series', '5 Series', '7 Series', 'X3', 'X5', 'X1', '4 Series', 'X7', '2 Series', '8 Series', 'Z4', 'i3'],
+    bugatti: ['Chiron', 'Divo', 'Centodieci', 'La Voiture Noire'],
+    buick: ['Encore', 'Enclave', 'Envision', 'Regal', 'Cascada'],
+    cadillac: ['XT5', 'Escalade', 'XT4', 'CT5', 'CT4', 'ATS', 'XT6'],
+    chevrolet: ['Silverado', 'Equinox', 'Malibu', 'Camaro', 'Tahoe', 'Traverse', 'Colorado', 'Blazer', 'Suburban', 'Trailblazer', 'Spark', 'Impala'],
+    chrysler: ['Pacifica', 'Voyager', '300', 'Aspen'],
+    dodge: ['Durango', 'Charger', 'Challenger', 'Journey', 'Viper'],
+    ferrari: ['F8 Tributo', '812 Superfast', 'Roma', 'SF90 Stradale', 'Portofino'],
+    fiat: ['500', '500X', '500L', '124 Spider'],
+    fisker: ['Ocean', 'Emotion'],
+    ford: ['F-150', 'Focus', 'Escape', 'Explorer', 'Mustang', 'Edge', 'Ranger', 'Fusion', 'Expedition', 'Bronco', 'Mach-E', 'Transit'],
+    genesis: ['G80', 'G90', 'GV80', 'GV70'],
+    gmc: ['Sierra 1500', 'Yukon', 'Acadia', 'Terrain', 'Canyon', 'Denali'],
+    honda: ['Civic', 'Accord', 'CR-V', 'Pilot', 'Odyssey', 'Fit', 'HR-V', 'Ridgeline', 'Insight', 'Passport', 'S2000'],
+    hyundai: ['Elantra', 'Tucson', 'Santa Fe', 'Kona', 'Palisade', 'Sonata', 'Venue', 'Ioniq', 'Veloster', 'Genesis', 'Nexo'],
+    infiniti: ['QX60', 'QX50', 'Q50', 'QX80', 'QX30', 'Q60', 'QX70'],
+    jaguar: ['F-PACE', 'E-PACE', 'I-PACE', 'XF', 'XJ', 'XE'],
+    jeep: ['Grand Cherokee', 'Cherokee', 'Wrangler', 'Compass', 'Renegade', 'Gladiator', 'Wagoneer', 'Grand Wagoneer'],
+    kia: ['Seltos', 'Sportage', 'Telluride', 'Sorento', 'Forte', 'Soul', 'Niro', 'Cadenza', 'Stinger', 'Rio', 'Optima', 'K900'],
+    koenigsegg: ['Jesko', 'Gemera', 'Regera', 'Ragnarok'],
+    lamborghini: ['Urus', 'Huracán', 'Aventador', 'Sián FKP 37', 'Essenza SCV12'],
+    land_rover: ['Range Rover', 'Discovery', 'Defender', 'Range Rover Sport', 'Range Rover Velar', 'Evoque'],
+    lexus: ['RX', 'NX', 'ES', 'UX', 'GX', 'IS', 'LS', 'LC', 'LX', 'RC', 'CT', 'LFA'],
+    lincoln: ['Navigator', 'Aviator', 'Corsair', 'Nautilus', 'Continental', 'MKZ'],
+    lotus: ['Evora', 'Elise', 'Exige', 'Elan', 'Esprit'],
+    lucid: ['Air', 'Air Touring', 'Air Grand Touring', 'Air Dream Edition'],
+    maserati: ['Levante', 'Ghibli', 'Quattroporte', 'GranTurismo', 'MC20'],
+    mazda: ['CX-5', 'Mazda3', 'CX-9', 'Mazda6', 'MX-5 Miata', 'CX-30', 'RX-7', 'RX-8', 'Mazdaspeed3'],
+    mclaren: ['720S', '570S', 'GT', 'Speedtail', 'Artura'],
+    mercedes_benz: ['C-Class', 'E-Class', 'S-Class', 'GLC', 'GLE', 'A-Class', 'CLA', 'GLA', 'G-Class', 'GLS', 'SLC', 'SL'],
+    mini: ['Cooper', 'Countryman', 'Clubman', 'Paceman'],
+    nissan: ['Rogue', 'Altima', 'Sentra', 'Murano', 'Pathfinder', 'Titan', 'Maxima', 'Armada', 'Versa', 'Kicks', '370Z', 'Leaf'],
+    pagani: ['Huayra', 'Huayra Roadster', 'Huayra BC', 'Huayra Roadster BC'],
+    polestar: ['Polestar 2'],
+    porsche: ['911', 'Cayenne', 'Panamera', 'Macan', 'Taycan', 'Boxster', 'Cayman', '718 Spyder', '911 GT3'],
+    ram: ['1500', '2500', '3500', 'ProMaster', 'ProMaster City', 'Rebel TRX'],
+    rivian: ['R1T', 'R1S'],
+    rolls_royce : ['Phantom', 'Cullinan', 'Ghost', 'Wraith', 'Dawn'],
+    subaru: ['Outback', 'Forester', 'Crosstrek', 'Ascent', 'Impreza', 'Legacy', 'BRZ', 'WRX', 'XV Crosstrek'],
+    tesla: ['Model 3', 'Model S', 'Model X', 'Model Y', 'Cybertruck', 'Roadster', 'Model X Plaid', 'Model S Plaid'],
+    toyota: ['Camry', 'Corolla', 'Rav4', 'Highlander', 'Prius', 'Sienna', 'Tacoma', 'Tundra', '4Runner', 'Land Cruiser', 'Supra', 'Yaris'],
+    volkswagen: ['Golf', 'Passat', 'Tiguan', 'Atlas', 'Jetta', 'Arteon', 'ID.4', 'Touareg', 'Atlas Cross Sport', 'Taos', 'Beetle', 'CC'],
+    volvo: ['XC90', 'XC60', 'S60', 'S90', 'V60', 'V90', 'XC40', 'C40', 'Polestar 2', 'V60 Cross Country'],
+  };
+
+
+  function updateModelList() {
+    const brandInput = document.getElementById("merke");
+    const modelList = document.getElementById("bilModelList");
+    const selectedBrand = brandInput.value.toLowerCase();
+
+    // Clear existing options
+    modelList.innerHTML = "";
+
+    // Check if the selected brand is in the carModels object
+    if (carModels.hasOwnProperty(selectedBrand)) {
+      // Add options for the selected brand
+      carModels[selectedBrand].forEach(model => {
+        const option = document.createElement("option");
+        option.value = model;
+        modelList.appendChild(option);
+      });
+    }
+  }
+
 </script>
 </body>
 </html>
