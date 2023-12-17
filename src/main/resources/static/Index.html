@@ -17,7 +17,8 @@
   <input type="text" id="navn" name="navn" required>
 
   <label for="adresse">Adresse:</label>
-  <input type="text" id="adresse" name="adresse" required>
+  <input type="text" id="adresse" name="adresse" list="gateadresseListe" required>
+  <datalist id="gateadresseListe"></datalist></br></br>
 
   <label for="bilskilt">Bilskilt:</label>
   <input type="text" id="bilskilt" name="bilskilt" maxlength="7" required>
@@ -82,9 +83,9 @@
 
   <datalist id="bilModelList"></datalist>
 
-  <button type="button" onclick="addCar()">Add Car</button>
+  <button type="button" onclick="addCar()">Registrer</button>
 
-  <button type="button" onclick="deleteAllCars()">Delete All</button>
+  <button type="button" onclick="deleteAllCars()">Slett alle</button>
 </form>
 
 <h2>Car List</h2>
@@ -96,11 +97,36 @@
     <th>Bilskilt</th>
     <th>Merke</th>
     <th>Modell</th>
-    <th>Action</th>
+    <th>Fjern</th>
   </tr>
 </table>
 
 <script>
+
+  document.getElementById('adresse').addEventListener('input', function() {
+    var searchTerm = this.value;
+    var datalistElement = document.getElementById('gateadresseListe');
+
+    // Fetch addresses from Kartverket Norgeskart API
+    fetch(`https://ws.geonorge.no/adresser/v1/sok?sok=${searchTerm}&treffPerSide=10`)
+            .then(response => response.json())
+            .then(data => {
+              // Clear the datalist
+              datalistElement.innerHTML = "";
+
+              // Add addresses to the datalist
+              data.adresser.forEach(adresse => {
+                var option = document.createElement("option");
+
+                // Add postal code and city to the address text
+                option.value = `${adresse.adressetekst}, ${adresse.postnummer} ${adresse.poststed}`;
+
+                datalistElement.appendChild(option);
+              });
+            })
+            .catch(error => console.error("Error fetching addresses:", error));
+  });
+
   function addCar() {
     resetErrorStyles();
 
@@ -154,7 +180,7 @@
     cell4.innerHTML = bilskilt;
     cell5.innerHTML = merke;
     cell6.innerHTML = modell;
-    cell7.innerHTML = '<button onclick="deleteCar(this)">Delete</button>';
+    cell7.innerHTML = '<button onclick="deleteCar(this)">Slett</button>';
 
   }
 
