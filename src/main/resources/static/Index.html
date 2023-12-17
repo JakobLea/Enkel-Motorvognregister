@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Registry</title>
 </head>
 <body>
+<h1>Bilregister</h1>
 
+<form id="carForm">
+  <label for="persNum">Personnummer:</label>
+  <input type="number" id="persNum" name="persNum" required>
+
+  <label for="navn">Navn:</label>
+  <input type="text" id="navn" name="navn" required>
+
+  <label for="adresse">Adresse:</label>
+  <input type="text" id="adresse" name="adresse" required>
+
+  <label for="bilskilt">License Plate:</label>
+  <input type="text" id="bilskilt" name="bilskilt" required>
+
+  <label for="merke">Merke:</label>
+  <input type="text" id="merke" name="merke" required>
+
+  <label for="modell">Modell:</label>
+  <input type="text" id="modell" name="modell" required>
+
+  <button type="button" onclick="addCar()">Add Car</button>
+</form>
+
+<h2>Car List</h2>
+<table id="carTable" border="1">
+  <tr>
+    <th>Personnummer</th>
+    <th>Navn</th>
+    <th>Adresse</th>
+    <th>Bilskilt</th>
+    <th>Merke</th>
+    <th>Modell</th>
+    <th>Action</th>
+  </tr>
+</table>
+
+<script>
+  function addCar() {
+    let persNum = document.getElementById("persNum").value;
+    let navn = document.getElementById("navn").value;
+    let adresse = document.getElementById("adresse").value;
+    let bilskilt = document.getElementById("bilskilt").value;
+    let merke = document.getElementById("merke").value;
+    let modell = document.getElementById("modell").value;
+
+    let table = document.getElementById("carTable");
+    let row = table.insertRow(-1);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    let cell4 = row.insertCell(3);
+    let cell5 = row.insertCell(4);
+    let cell6 = row.insertCell(5);
+    let cell7 = row.insertCell(6);
+
+    cell1.innerHTML = persNum;
+    cell2.innerHTML = navn;
+    cell3.innerHTML = adresse;
+    cell4.innerHTML = bilskilt;
+    cell5.innerHTML = merke;
+    cell6.innerHTML = modell;
+    cell7.innerHTML = '<button onclick="deleteCar(this)">Delete</button>';
+
+    // Send data to server (not implemented in this example)
+  }
+
+  function deleteCar(row) {
+    let rowIndex = row.parentNode.parentNode.rowIndex;
+    document.getElementById("carTable").deleteRow(rowIndex);
+
+    // Send delete request to server (not implemented in this example)
+  }
+</script>
 </body>
 </html>
