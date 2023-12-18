@@ -331,7 +331,7 @@
     // Sample data
     const sampleData = {
       persNum: generateRandomPersonnummer(),
-      navn: "John Doe",
+      navn: generateRandomName(),
       adresse: "Sample Address, 12345 City",
       bilskilt: generateRandomBilskilt(),
       merke: "Toyota",
@@ -368,6 +368,16 @@
     const randomNumbers = Array.from({ length: 5 }, () => numbers[Math.floor(Math.random() * numbers.length)]).join('');
 
     return `${randomLetters}${randomNumbers}`;
+  }
+
+  const fornavn = ["John", "Jane", "Michael", "Emma", "David", "Sophia", "Daniel", "Olivia", "Christopher", "Ava"];
+  const etternavn = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"];
+
+  function generateRandomName() {
+    const tilfeldigFornavn = fornavn[Math.floor(Math.random() * fornavn.length)];
+    const tilfeldigEtternavn = etternavn[Math.floor(Math.random() * etternavn.length)];
+
+    return `${tilfeldigFornavn} ${tilfeldigEtternavn}`;
   }
 
   function padLeadingZero(value) {
