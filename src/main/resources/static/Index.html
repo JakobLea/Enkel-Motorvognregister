@@ -18,7 +18,7 @@
 
   <label for="adresse">Adresse:</label>
   <input type="text" id="adresse" name="adresse" list="gateadresseListe" required>
-  <datalist id="gateadresseListe"></datalist></br></br>
+  <datalist id="gateadresseListe"></datalist> <br> <br>
 
   <label for="bilskilt">Bilskilt:</label>
   <input type="text" id="bilskilt" name="bilskilt" maxlength="7" required>
@@ -91,6 +91,10 @@
 </form>
 
 <h2>Bilregister</h2>
+
+<label for="search">Search:</label>
+<input type="text" id="search" oninput="filterCarList()">
+
 <table id="carTable" border="1">
   <tr>
     <th>Personnummer</th>
@@ -106,8 +110,8 @@
 <script>
 
   document.getElementById('adresse').addEventListener('input', function() {
-    var searchTerm = this.value;
-    var datalistElement = document.getElementById('gateadresseListe');
+    let searchTerm = this.value;
+    let datalistElement = document.getElementById('gateadresseListe');
 
     // Fetch addresses from Kartverket Norgeskart API
     fetch(`https://ws.geonorge.no/adresser/v1/sok?sok=${searchTerm}&treffPerSide=10`)
@@ -118,7 +122,7 @@
 
               // Add addresses to the datalist
               data.adresser.forEach(adresse => {
-                var option = document.createElement("option");
+                let option = document.createElement("option");
 
                 // Add postal code and city to the address text
                 option.value = `${adresse.adressetekst}, ${adresse.postnummer} ${adresse.poststed}`;
@@ -323,6 +327,20 @@
     const field = document.getElementById(fieldId);
     field.classList.add('error');
   }
+
+
+  function filterCarList() {
+    const searchInput = document.getElementById("search").value.toLowerCase();
+    const carTable = document.getElementById("carTable");
+
+    for (let i = 1; i < carTable.rows.length; i++) {
+      const row = carTable.rows[i];
+      const shouldShow = Array.from(row.cells).some(cell => cell.textContent.toLowerCase().includes(searchInput));
+
+      row.style.display = shouldShow ? "" : "none";
+    }
+  }
+
 
   function generateRandomCar() {
     const brands = Object.keys(carModels);
