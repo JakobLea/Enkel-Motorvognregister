@@ -85,12 +85,12 @@
 
   <button type="button" onclick="addCar()">Registrer</button>
 
-  <button type="button" onclick="fillAndAddCar()">Fill and Add Car</button>
+  <button type="button" onclick="fillAndAddCar()">Fyll ut automatisk</button>
 
   <button type="button" onclick="deleteAllCars()">Slett alle</button>
 </form>
 
-<h2>Car List</h2>
+<h2>Bilregister</h2>
 <table id="carTable" border="1">
   <tr>
     <th>Personnummer</th>
@@ -141,27 +141,27 @@
 
     // Check for empty fields
     if (!persNum || !navn || !adresse || !bilskilt || !merke || !modell) {
-      alert("Please fill out all fields.");
+      alert("Vennligst fyll ut alle felt.");
       highlightEmptyFields();
       return;
     }
 
     // Validate person number
     if (!validatePersonNr(persNum)) {
-      alert("Invalid person number!");
+      alert("Vennligst skriv inn et gyldig personnummer.");
       highlightErrorField("persNum");
       return;
     }
 
     // Validate bilskilt
     if (!validateBilskilt(bilskilt)) {
-      alert("Invalid bilskilt! It should start with 2 letters followed by 5 numbers.");
+      alert("Vennligst skriv inn bilskiltet i riktig format (2 bokstaver + 5 tall).");
       highlightErrorField("bilskilt");
       return;
     }
 
     if (isBilskiltInUse(bilskilt)) {
-      alert("Bilskilt is already in use!");
+      alert("Bilskilt ellerede i bruk.");
       highlightErrorField("bilskilt");
       return;
     }
@@ -324,18 +324,32 @@
     field.classList.add('error');
   }
 
+  function generateRandomCar() {
+    const brands = Object.keys(carModels);
+    const randomBrand = brands[Math.floor(Math.random() * brands.length)];
+    const models = carModels[randomBrand];
+    const randomModel = models[Math.floor(Math.random() * models.length)];
+
+    return {
+      brand: randomBrand,
+      model: randomModel,
+    };
+  }
+
   function fillAndAddCar() {
     // Reset error styles
     resetErrorStyles();
+
+    const randomCar = generateRandomCar();
 
     // Sample data
     const sampleData = {
       persNum: generateRandomPersonnummer(),
       navn: generateRandomName(),
-      adresse: "Sample Address, 12345 City",
+      adresse: generateTilfeldigAdresse(),
       bilskilt: generateRandomBilskilt(),
-      merke: "Toyota",
-      modell: "Camry",
+      merke: randomCar.brand,
+      modell: randomCar.model,
     };
 
     // Fill in the form fields with sample data
@@ -379,6 +393,23 @@
 
     return `${tilfeldigFornavn} ${tilfeldigEtternavn}`;
   }
+
+  const gateadresseOptions = ["Stor", "Lille", "Bakke", "Hoved", "Ny"];
+  const veigateOptions = ["allé", "vei", "gate", "sti"];
+  const postnummerOptions = ["1234", "5678", "9012", "3456", "7890"];
+  const byOptions = ["Oslo", "Bergen", "Trondheim", "Stavanger", "Kristiansand"];
+
+  function generateTilfeldigAdresse() {
+    const tilfeldigGateadresse = gateadresseOptions[Math.floor(Math.random() * gateadresseOptions.length)];
+    const tilfeldigVeigate = veigateOptions[Math.floor(Math.random() * veigateOptions.length)];
+    const tilfeldigNumber = Math.floor(Math.random() * 100) + 1; // Random number between 1 and 100
+    const tilfeldigPostnummer = postnummerOptions[Math.floor(Math.random() * postnummerOptions.length)];
+    const tilfeldigBy = byOptions[Math.floor(Math.random() * byOptions.length)];
+
+    return `${tilfeldigGateadresse}${tilfeldigVeigate} ${tilfeldigNumber},  ${tilfeldigPostnummer} ${tilfeldigBy}`;
+  }
+
+
 
   function padLeadingZero(value) {
     return value < 10 ? `0${value}` : `${value}`;
