@@ -18,7 +18,7 @@
 
   <label for="adresse">Adresse:</label>
   <input type="text" id="adresse" name="adresse" list="gateadresseListe" required>
-  <datalist id="gateadresseListe"></datalist> <br> <br>
+  <datalist id="gateadresseListe"></datalist>
 
   <label for="bilskilt">Bilskilt:</label>
   <input type="text" id="bilskilt" name="bilskilt" maxlength="7" required>
@@ -83,19 +83,21 @@
 
   <datalist id="bilModelList"></datalist>
 
-  <button type="button" onclick="addCar()">Registrer</button>
+  <br>
 
-  <button type="button" onclick="fillAndAddCar()">Fyll ut automatisk</button>
+  <button type="button" onclick="addCar()">Registrer</button> <br>
 
-  <button type="button" onclick="deleteAllCars()">Slett alle</button>
+  <button type="button" onclick="fillAndAddCar()">Fyll ut og registrer en test</button>
+
 </form>
 
 <h2>Bilregister</h2>
 
+
 <label for="search">Search:</label>
 <input type="text" id="search" oninput="filterCarList()">
 
-<table id="carTable" border="1">
+<table id="carTable">
   <tr>
     <th>Personnummer</th>
     <th>Navn</th>
@@ -105,7 +107,9 @@
     <th>Modell</th>
     <th>Fjern</th>
   </tr>
+  <button class="slett" type="button" onclick="deleteAllCars()">Slett alle</button>
 </table>
+
 
 <script>
 
@@ -342,6 +346,62 @@
   }
 
 
+  const brandDisplayName = {
+    acura: 'Acura',
+    alfa_romeo: 'Alfa Romeo',
+    aston_martin: 'Aston Martin',
+    audi: 'Audi',
+    bentley: 'Bentley',
+    bmw: 'BMW',
+    bugatti: 'Bugatti',
+    buick: 'Buick',
+    cadillac: 'Cadillac',
+    chevrolet: 'Chevrolet',
+    chrysler: 'Chrysler',
+    dodge: 'Dodge',
+    ferrari: 'Ferrari',
+    fiat: 'Fiat',
+    fisker: 'Fisker',
+    ford: 'Ford',
+    genesis: 'Genesis',
+    gmc: 'GMC',
+    honda: 'Honda',
+    hyundai: 'Hyundai',
+    infiniti: 'Infiniti',
+    jaguar: 'Jaguar',
+    jeep: 'Jeep',
+    kia: 'Kia',
+    koenigsegg: 'Koenigsegg',
+    lamborghini: 'Lamborghini',
+    land_rover: 'Land Rover',
+    lexus: 'Lexus',
+    lincoln: 'Lincoln',
+    lotus: 'Lotus',
+    lucid: 'Lucid',
+    maserati: 'Maserati',
+    mazda: 'Mazda',
+    mclaren: 'McLaren',
+    mercedes_benz: 'Mercedes-Benz',
+    mini: 'MINI',
+    nissan: 'Nissan',
+    pagani: 'Pagani',
+    polestar: 'Polestar',
+    porsche: 'Porsche',
+    ram: 'Ram',
+    rivian: 'Rivian',
+    rolls_royce: 'Rolls-Royce',
+    subaru: 'Subaru',
+    tesla: 'Tesla',
+    toyota: 'Toyota',
+    volkswagen: 'Volkswagen',
+    volvo: 'Volvo',
+  };
+
+  // Function to get the display name for a brand
+  function getBrandDisplayName(brand) {
+    return brandDisplayName[brand] || brand; // If not found, use the original brand
+  }
+
   function generateRandomCar() {
     const brands = Object.keys(carModels);
     const randomBrand = brands[Math.floor(Math.random() * brands.length)];
@@ -349,10 +409,11 @@
     const randomModel = models[Math.floor(Math.random() * models.length)];
 
     return {
-      brand: randomBrand,
+      brand: getBrandDisplayName(randomBrand),
       model: randomModel,
     };
   }
+
 
   function fillAndAddCar() {
     // Reset error styles
