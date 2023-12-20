@@ -89,6 +89,15 @@
 
   <button type="button" onclick="fillAndAddCar()">Fyll ut og registrer en test</button>
 
+  <label for="autoRegister">Antall brukere:</label>
+  <select id="autoRegister" name="autoRegister">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+
 </form>
 
 <h2>Bilregister</h2>
@@ -420,28 +429,30 @@
     // Reset error styles
     resetErrorStyles();
 
-    const randomCar = generateRandomCar();
+    const numberOfUsers = parseInt(document.getElementById("autoRegister").value, 10);
 
-    // Sample data
-    const sampleData = {
-      persNum: generateRandomPersonnummer(),
-      navn: generateRandomName(),
-      adresse: generateTilfeldigAdresse(),
-      bilskilt: generateRandomBilskilt(),
-      merke: randomCar.brand,
-      modell: randomCar.model,
-    };
+    for (let i = 0; i < numberOfUsers; i++) {
+      const randomCar = generateRandomCar();
+      const sampleData = {
+        persNum: generateRandomPersonnummer(),
+        navn: generateRandomName(),
+        adresse: generateTilfeldigAdresse(),
+        bilskilt: generateRandomBilskilt(),
+        merke: randomCar.brand,
+        modell: randomCar.model,
+      };
 
-    // Fill in the form fields with sample data
-    document.getElementById("persNum").value = sampleData.persNum;
-    document.getElementById("navn").value = sampleData.navn;
-    document.getElementById("adresse").value = sampleData.adresse;
-    document.getElementById("bilskilt").value = sampleData.bilskilt;
-    document.getElementById("merke").value = sampleData.merke;
-    document.getElementById("modell").value = sampleData.modell;
+      // Fill in the form fields with sample data
+      document.getElementById("persNum").value = sampleData.persNum;
+      document.getElementById("navn").value = sampleData.navn;
+      document.getElementById("adresse").value = sampleData.adresse;
+      document.getElementById("bilskilt").value = sampleData.bilskilt;
+      document.getElementById("merke").value = sampleData.merke;
+      document.getElementById("modell").value = sampleData.modell;
 
-    // Add the car to the list
-    addCar();
+      // Add the car to the list
+      addCar();
+    }
   }
 
   function generateRandomPersonnummer() {
