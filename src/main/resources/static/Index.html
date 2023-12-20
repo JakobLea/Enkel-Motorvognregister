@@ -302,27 +302,51 @@
   }
 
   function validatePersonNr(personNr) {
-    // Check if personNr has 11 digits
-    if (!/^\d{11}$/.test(personNr)) {
+    // Check if personnummer is 11 digits
+    if (personNr.length !== 11) {
       return false;
     }
 
-    // Check if the first two digits are between 01 and 31
-    var dayPart = parseInt(personNr.substr(0, 2), 10);
-    if (!(dayPart >= 1 && dayPart <= 31)) {
+    const individualNumber = personNr.substring(6, 11);
+
+    // Check if individualNumber is between 00001 and 99999
+    const individualNumberInt = parseInt(individualNumber, 10);
+    if (isNaN(individualNumberInt) || individualNumberInt < 1 || individualNumberInt > 99999) {
       return false;
     }
 
-    // Check if the next two digits are between 01 and 12
-    var monthPart = parseInt(personNr.substr(2, 2), 10);
-    if (!(monthPart >= 1 && monthPart <= 12)) {
+    const day = parseInt(personNr.substring(0, 2), 10);
+    const month = parseInt(personNr.substring(2, 4), 10);
+    let year = parseInt(personNr.substring(4, 6), 10);
+
+    // Add 1900 to the year if it's less than 30, 2000 if less than 100, 1800 if between 100 and 130
+    year += year < 30 ? 2000 : (year < 100 ? 1900 : (year >= 100 && year < 130 ? 1800 : 0));
+
+    // Check if the birthdate is valid
+    if (
+            isNaN(day) || isNaN(month) || isNaN(year) ||
+            day < 1 || day > 31 ||
+            month < 1 || month > 12 ||
+            (year < 1800 || (year >= 1800 && year <= 1899) || (year >= 2100))
+    ) {
       return false;
     }
 
-    // Additional checks for the rest of the personal identification number if needed
+    const k1 = parseInt(personNr.charAt(9), 10);
+    const k2 = parseInt(personNr.charAt(10), 10);
 
-    return true;
+    const weights = [3, 7, 6, 1, 8, 9, 4, 5, 2];
+
+    const checksum = weights.reduce((sum, weight, index) => {
+      return sum + weight * parseInt(personNr.charAt(index), 10);
+    }, 0);
+
+    const remainder = checksum % 11;
+    const expectedCheckDigit = remainder === 0 ? 0 : 11 - remainder;
+
+    return k1 === expectedCheckDigit && k2 === (k1 === 10 ? 0 : k2 === 10 ? 0 : k2);
   }
+
 
   function validateBilskilt(bilskilt) {
     // Check if bilskilt starts with 2 letters followed by 5 numbers
@@ -467,6 +491,7 @@
     }
   }
 
+
   function generateRandomPersonnummer() {
     // Generate random day (01-31), month (01-12), and year (00-99)
     const dayPart = padLeadingZero(Math.floor(Math.random() * 31) + 1);
@@ -474,8 +499,17 @@
     const yearPart = padLeadingZero(Math.floor(Math.random() * 100));
 
     // Concatenate parts to form the Personnummer
-    return `${dayPart}${monthPart}${yearPart}12345`;
+    const randomPersonnummer = `${dayPart}${monthPart}${yearPart}12345`;
+
+    // Ensure the generated personnummer meets the requirements
+    if (!validatePersonNr(randomPersonnummer)) {
+      // If not valid, recursively call the function until a valid personnummer is generated
+      return generateRandomPersonnummer();
+    }
+
+    return randomPersonnummer;
   }
+
 
   function generateRandomBilskilt() {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
