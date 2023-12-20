@@ -11,7 +11,11 @@
 
 <form id="carForm">
   <label for="persNum">Personnummer:</label>
-  <input type="text" id="persNum" name="persNum" maxlength="11" required>
+  <div class="PrsNr">
+    <input type="text" id="persNum" name="persNum" maxlength="11" required>
+
+    <button id="PrsNrBtn" type="button" onclick="fillPersonnummer()">Generer personnummer</button>
+  </div>
 
   <label for="navn">Navn:</label>
   <input type="text" id="navn" name="navn" required>
@@ -88,6 +92,7 @@
   <button type="button" onclick="addCar()">Registrer</button> <br>
 
   <button type="button" onclick="fillAndAddCar()">Fyll ut og registrer en test</button>
+
 
   <label for="autoRegister">Antall brukere:</label>
   <select id="autoRegister" name="autoRegister">
@@ -470,7 +475,7 @@
     for (let i = 0; i < numberOfUsers; i++) {
       const randomCar = generateRandomCar();
       const sampleData = {
-        persNum: generateRandomPersonnummer(),
+        persNum: generateRandomValidPersonnummer(),
         navn: generateRandomName(),
         adresse: generateTilfeldigAdresse(),
         bilskilt: generateRandomBilskilt(),
@@ -491,6 +496,17 @@
     }
   }
 
+  function fillPersonnummer() {
+    document.getElementById("persNum").value = generateRandomValidPersonnummer();
+  }
+
+  function generateRandomValidPersonnummer() {
+    let randomPersonnummer;
+    do {
+      randomPersonnummer = generateRandomPersonnummer();
+    } while (!validatePersonNr(randomPersonnummer));
+    return randomPersonnummer;
+  }
 
   function generateRandomPersonnummer() {
     // Generate random day (01-31), month (01-12), and year (00-99)
@@ -498,17 +514,14 @@
     const monthPart = padLeadingZero(Math.floor(Math.random() * 12) + 1);
     const yearPart = padLeadingZero(Math.floor(Math.random() * 100));
 
+    // Generate random individual number (00001 - 99999)
+    const individualNumber = padLeadingZero(Math.floor(Math.random() * 90000) + 10000);
+
     // Concatenate parts to form the Personnummer
-    const randomPersonnummer = `${dayPart}${monthPart}${yearPart}12345`;
-
-    // Ensure the generated personnummer meets the requirements
-    if (!validatePersonNr(randomPersonnummer)) {
-      // If not valid, recursively call the function until a valid personnummer is generated
-      return generateRandomPersonnummer();
-    }
-
-    return randomPersonnummer;
+    return `${dayPart}${monthPart}${yearPart}${individualNumber}`;
   }
+
+
 
 
   function generateRandomBilskilt() {
