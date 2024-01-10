@@ -36,20 +36,20 @@ Til slutt la jeg til muligheten for å slette brukere. Da er det en knapp hvor d
 
 <h3>Oppgave til brukeren</h3>
 
-1. Gi nettisden ett overblikk. Hva ser du her?
-      Jeg ser en ryddig side hvor man kan fylle ut data til personer og biler.
-2. Hva tror du hensikten med nettsiden er?
-      Jeg tror det er en side hvor man kan registrer personer til biler.
-3. Klarer du å finne addressen din ved hjelp av lista?
-      Ja den kom opp etter jeg hadde skrevet noen bokstaver.
-4. Klarer du å finne bilen din?
-      Ja den kom også opp av å trykke noen bokstaver og modellen så jeg med en gang
-5. Klarer du å registre en bruker til registeret uten å automatisk fylle ut?
-      Ja, men jeg måtte fylle ut fødselsnummeret med knappen siden jeg ikke husker mitt egen.
-6. Klarer du å slette kun 1 registrert bil?
-      Ja
-7. Klarer du å slette alle registrerte biler?
-      Ja
+1. Gi nettisden ett overblikk. Hva ser du her? <br>
+   Jeg ser en ryddig side hvor man kan fylle ut data til personer og biler.
+3. Hva tror du hensikten med nettsiden er?
+   Jeg tror det er en side hvor man kan registrer personer til biler.
+4. Klarer du å finne addressen din ved hjelp av lista?
+   Ja den kom opp etter jeg hadde skrevet noen bokstaver.
+5. Klarer du å finne bilen din?
+   Ja den kom også opp av å trykke noen bokstaver og modellen så jeg med en gang
+6. Klarer du å registre en bruker til registeret uten å automatisk fylle ut?
+   Ja, men jeg måtte fylle ut fødselsnummeret med knappen siden jeg ikke husker mitt egen.
+7. Klarer du å slette kun 1 registrert bil?
+   Ja
+8. Klarer du å slette alle registrerte biler?
+   Ja
    
 <h3>Tilbakemeldingsspørsmål</h3>
 
