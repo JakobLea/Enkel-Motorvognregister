@@ -42,7 +42,7 @@ Til slutt la jeg til muligheten for å slette brukere. Da er det en knapp hvor d
    Jeg tror det er en side hvor man kan registrer personer til biler. 
 3. Klarer du å finne addressen din ved hjelp av lista? <br>
    Ja den kom opp etter jeg hadde skrevet noen bokstaver. 
-4. Klarer du å finne bilen din? <br>
+4. Klarer du å finne en bil du liker? <br>
    Ja den kom også opp av å trykke noen bokstaver og modellen så jeg med en gang 
 5. Klarer du å registre en bruker til registeret uten å automatisk fylle ut? <br>
    Ja, men jeg måtte fylle ut fødselsnummeret med knappen siden jeg ikke husker mitt egen. 
@@ -62,25 +62,37 @@ Til slutt la jeg til muligheten for å slette brukere. Da er det en knapp hvor d
 4. Er det andre instillinger du ønsker deg? <br>
    Nei egentig ikke, jeg likte godt det at man kunne automatisk fylle ut fødselsnummer automatisk.
 5. Hva kan forbedres? <br>
-   Ingentilgcjeg kommer på
+   Ingentilg jeg kommer på
 
 <h2>Brukertest 2</h2>
 
 1. Gi nettisden ett overblikk. Hva ser du her? <br>
+   Jeg ser en nettside som man kan skrive inn informasjon med en tom tabell i bunnen.
 2. Hva tror du hensikten med nettsiden er?
+   Å kunne skrive inn informasjon om en person og en bil og det vil vises i tabellen under.
 3. Klarer du å finne addressen din ved hjelp av lista? <br>
-4. Klarer du å finne bilen din? <br>
+   Ja
+4. Klarer du å finne en bil du liker? <br>
+   Ja
 5. Klarer du å registre en bruker til registeret uten å automatisk fylle ut? <br>
+   Ja
 6. Klarer du å slette kun 1 registrert bil? <br>
+   Ja, trykket på knappen ved siden av bile jeg ville slette
 7. Klarer du å slette alle registrerte biler? <br>
+   Ja trykket på slett alle knappen
 
 <h3>Tilbakemeldingsspørsmål</h3>
 
 1. Hva synes du om nettsiden? <br>
+   Fin, oversiktelig og enkel å bruke
 2. Hvordan var det å bruke nettsiden? <br>
+   Det var veldig enkelt å forstå hva man skulle gjøre og de forskjellige knappene for å fylle ut informasjon var fine for å kunne teste
 3. Hva synes du om fargene? <br>
+   Jeg likte fargene og at det var en ganske simpel stil på siden
 4. Er det andre instillinger du ønsker deg? <br>
+   Nei
 5. Hva kan forbedres? <br>
+   Vet ikke
 
 <h2>Brukertest 3</h2>
 
