@@ -127,15 +127,17 @@ Til slutt la jeg til muligheten for å slette brukere. Da er det en knapp hvor d
 <h1>Literaturliste</h1>
 
 <h2>Kilder brukt underveis i utviklingen</h2>
-* https://chat.openai.com/
-* https://www.w3schools.com/
-* Egen Java regelbok
+
+* Egen Java regelbok <br>
+* https://chat.openai.com/ <br>
+* https://www.w3schools.com/ <br>
 
 <h2>API for adresser</h2>
-* https://kartverket.no/api-og-data/eiendomsdata/brukarrettleiing-adresse-api
-* https://ws.geonorge.no/adresser/v1/
+
+* https://kartverket.no/api-og-data/eiendomsdata/brukarrettleiing-adresse-api <br>
+* https://ws.geonorge.no/adresser/v1/ <br>
 
 <h2>Fødselsnummer</h2>
 
-* https://no.wikipedia.org/wiki/F%C3%B8dselsnummer
-* https://www.skatteetaten.no/person/folkeregister/identitetsnummer/fodselsnummer/
+* https://no.wikipedia.org/wiki/F%C3%B8dselsnummer <br>
+* https://www.skatteetaten.no/person/folkeregister/identitetsnummer/fodselsnummer/ <br>
