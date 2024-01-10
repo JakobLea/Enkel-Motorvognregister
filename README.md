@@ -38,29 +38,29 @@ Til slutt la jeg til muligheten for å slette brukere. Da er det en knapp hvor d
 
 1. Gi nettisden ett overblikk. Hva ser du her? <br>
    Jeg ser en ryddig side hvor man kan fylle ut data til personer og biler.
-3. Hva tror du hensikten med nettsiden er?
-   Jeg tror det er en side hvor man kan registrer personer til biler.
-4. Klarer du å finne addressen din ved hjelp av lista?
-   Ja den kom opp etter jeg hadde skrevet noen bokstaver.
-5. Klarer du å finne bilen din?
-   Ja den kom også opp av å trykke noen bokstaver og modellen så jeg med en gang
-6. Klarer du å registre en bruker til registeret uten å automatisk fylle ut?
-   Ja, men jeg måtte fylle ut fødselsnummeret med knappen siden jeg ikke husker mitt egen.
-7. Klarer du å slette kun 1 registrert bil?
-   Ja
-8. Klarer du å slette alle registrerte biler?
-   Ja
+3. Hva tror du hensikten med nettsiden er? 
+   Jeg tror det er en side hvor man kan registrer personer til biler. 
+4. Klarer du å finne addressen din ved hjelp av lista? <br>
+   Ja den kom opp etter jeg hadde skrevet noen bokstaver. 
+5. Klarer du å finne bilen din? <br>
+   Ja den kom også opp av å trykke noen bokstaver og modellen så jeg med en gang 
+6. Klarer du å registre en bruker til registeret uten å automatisk fylle ut? <br>
+   Ja, men jeg måtte fylle ut fødselsnummeret med knappen siden jeg ikke husker mitt egen. 
+7. Klarer du å slette kun 1 registrert bil? <br>
+   Ja 
+8. Klarer du å slette alle registrerte biler? <br>
+   Ja 
    
 <h3>Tilbakemeldingsspørsmål</h3>
 
-1. Hva synes du om nettsiden?
+1. Hva synes du om nettsiden? <br>
    Jeg synes den var enkel og oversiktelig.
-2. Hvordan var det å bruke nettsiden?
+2. Hvordan var det å bruke nettsiden? <br>
    Det var enkelt og brukervennelig.
-3. Hva synes du om fargene?
+3. Hva synes du om fargene? <br>
    Fargene var simple og passet fint.
-4. Er det andre instillinger du ønsker deg?
+4. Er det andre instillinger du ønsker deg? <br>
    Nei egentig ikke, jeg likte godt det at man kunne automatisk fylle ut fødselsnummer automatisk.
-5. Hva kan forbedres?
+5. Hva kan forbedres? <br>
    Ingentilgcjeg kommer på
 
