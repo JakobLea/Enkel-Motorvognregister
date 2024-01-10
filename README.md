@@ -97,18 +97,29 @@ Til slutt la jeg til muligheten for å slette brukere. Da er det en knapp hvor d
 <h2>Brukertest 3</h2>
 
 1. Gi nettisden ett overblikk. Hva ser du her? <br>
+   Ser en mange felt hvor man kan skrive informasjon om personer og bil
 2. Hva tror du hensikten med nettsiden er?
+   Å registrere personer og biler
 3. Klarer du å finne addressen din ved hjelp av lista? <br>
-4. Klarer du å finne bilen din? <br>
+   Ja, lett å søke opp
+4. Klarer du å finne en bil du liker? <br>
+   Ja kunne også søke den opp
 5. Klarer du å registre en bruker til registeret uten å automatisk fylle ut? <br>
+   Ja bare fylte ut alle feltene med riktig struktur på allt
 6. Klarer du å slette kun 1 registrert bil? <br>
+   Ja, trykket på slett knappen
 7. Klarer du å slette alle registrerte biler? <br>
+   Ja, trykket på slett alle
 
 <h3>Tilbakemeldingsspørsmål</h3>
 
 1. Hva synes du om nettsiden? <br>
+   Liker designet og fargene
 2. Hvordan var det å bruke nettsiden? <br>
+   Veldig enkelt, alt var satt opp på en oversiktelig måte
 3. Hva synes du om fargene? <br>
+   Vargene var enkle og fine
 4. Er det andre instillinger du ønsker deg? <br>
+   Nei
 5. Hva kan forbedres? <br>
-
+   Vet ikke
